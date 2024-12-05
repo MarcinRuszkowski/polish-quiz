@@ -108,7 +108,7 @@ const questions = [
         correct: 0,
       },
       {
-        question: "What does 'KROWa' mean in English?",
+        question: "What does 'KROWA' mean in English?",
         options: ["cow", "sheep", "goat", "lion"],
         correct: 0,
       },
@@ -143,8 +143,8 @@ const questions = [
         correct: 0,
       },
       {
-        question: "What does 'PAW' mean in English?",
-        options: ["peacock", "goose", "owl", "rabbit"],
+        question: "What does 'MAŁPA' mean in English?",
+        options: ["monkey", "goose", "owl", "rabbit"],
         correct: 0,
       },
     ],

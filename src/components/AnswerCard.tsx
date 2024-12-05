@@ -1,5 +1,5 @@
 import React from "react";
-import { FaDog } from "react-icons/fa";
+import { iconAnswerMap } from "../data/iconAnswerMap";
 
 interface AnswerProps {
   answer: string;
@@ -23,7 +23,8 @@ export const AnswerCard: React.FC<AnswerProps> = ({
         isSelected ? selectedAnswerStyle : "border-gray-400"
       }`}
     >
-      <FaDog className="text-6xl" />
+      {iconAnswerMap(answer)}
+
       {answer}
     </div>
   );
