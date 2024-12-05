@@ -8,6 +8,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<LvlPath />} />
         <Route path="/level/:levelId" element={<LevelPage />} />

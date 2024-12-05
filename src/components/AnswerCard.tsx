@@ -19,7 +19,7 @@ export const AnswerCard: React.FC<AnswerProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`flex flex-col gap-5 items-center bg-secondary px-20 rounded-lg py-8 text-xl border-4 cursor-pointer ${
+      className={`flex flex-col gap-5 items-center bg-msecondary px-20 rounded-lg py-8 text-xl border-4 cursor-pointer ${
         isSelected ? selectedAnswerStyle : "border-gray-400"
       }`}
     >

@@ -109,7 +109,7 @@ export const LevelPage: React.FC = () => {
                 currentQuestion.options[currentQuestion.correct]
               )
             }
-            className="bg-primary text-white text-2xl px-10 py-4 rounded-lg hover:bg-primary-hover hover:scale-105 ease-in duration-150"
+            className="bg-mprimary text-white text-2xl px-10 py-4 rounded-lg hover:bg-mprimary-hover hover:scale-105 ease-in duration-150"
             disabled={!selectedAnswer}
           >
             Check the answer
@@ -117,7 +117,7 @@ export const LevelPage: React.FC = () => {
           <button
             onClick={resetLevel}
             title="restart the lvl"
-            className="bg-secondary hover:bg-secondary-hover text-white p-3 m-3 rounded-full hover:rotate-45 ease-in duration-150"
+            className="bg-msecondary hover:bg-msecondary-hover text-white p-3 m-3 rounded-full hover:rotate-45 ease-in duration-150"
           >
             <GrPowerReset />
           </button>
