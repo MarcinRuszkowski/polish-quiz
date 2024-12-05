@@ -18,7 +18,7 @@ export const LvlCircle: React.FC<LvlCircleProps> = ({ id, status }) => {
   return (
     <div
       onClick={handleClick}
-      className={`w-[80px] h-[80px] border-4 ${
+      className={`w-[80px] h-[80px] border-4 hover:scale-105 ease-in-out delay-200 ${
         status === "locked"
           ? "border-gray-500 cursor-not-allowed"
           : status === "unlocked"

@@ -17,7 +17,11 @@ export const Lives: React.FC<LivesProps> = ({ amountOfLives = 0 }) => {
       {hearts.map((heart, index) => (
         <FaHeart
           key={index}
-          className={`${heart ? "text-red-500" : "text-gray-700"}`}
+          className={`${
+            heart
+              ? "text-red-500"
+              : "text-gray-700 transition ease-in-out delay-200"
+          }`}
         />
       ))}
     </div>

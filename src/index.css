@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: Inter;
+}
+
 body {
   background: #1b2536;
 }

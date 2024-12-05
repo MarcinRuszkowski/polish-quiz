@@ -17,6 +17,7 @@ interface Level {
 interface QuizState {
   levels: Level[];
   currentLevel: number | null;
+  allLevelsCompleted: boolean;
 }
 
 const initialState: QuizState = {
@@ -27,6 +28,7 @@ const initialState: QuizState = {
     questions: level.questions,
   })),
   currentLevel: null,
+  allLevelsCompleted: false,
 };
 
 const quizSlice = createSlice({
@@ -46,6 +48,10 @@ const quizSlice = createSlice({
       );
       if (nextLevel && nextLevel.status === "locked") {
         nextLevel.status = "unlocked";
+      }
+
+      if (state.levels.every((lvl) => lvl.status === "completed")) {
+        state.allLevelsCompleted = true;
       }
     },
 

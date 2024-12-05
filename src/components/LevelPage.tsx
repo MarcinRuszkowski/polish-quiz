@@ -4,6 +4,10 @@ import questions from "../data/questions";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { completeLevel } from "../store/quizSlice";
+import { Lives } from "./Lives";
+import { GrPowerReset } from "react-icons/gr";
+import { FailAlert } from "./FailAlert";
+import { PassAlert } from "./PassAlert";
 
 export const LevelPage: React.FC = () => {
   const { levelId } = useParams<{ levelId: string }>();
@@ -19,6 +23,8 @@ export const LevelPage: React.FC = () => {
   const [selectedAnswerStyle, setSelectedAnswerStyle] =
     useState("border-blue-400");
   const [lives, setLives] = useState(3);
+  const [showFailAlert, setShowFailAlert] = useState(false);
+  const [showPassAlert, setShowPassAlert] = useState(false);
 
   if (!levelQuestions) {
     return <div className="text-white text-2xl">Level not found</div>;
@@ -33,8 +39,10 @@ export const LevelPage: React.FC = () => {
         setCurrentQuestionIndex((prev) => prev + 1);
       } else {
         dispatch(completeLevel(Number(levelId)));
-        alert("Congratulations! Level completed.");
-        navigate("/");
+        setShowPassAlert(true); // Wyświetl PassAlert
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        setShowPassAlert(false);
+        navigate("/"); // Przejście do strony głównej
       }
     } else {
       setSelectedAnswerStyle("border-red-500");
@@ -42,7 +50,9 @@ export const LevelPage: React.FC = () => {
       setSelectedAnswerStyle("border-blue-500");
       setLives((prevLives) => Math.max(prevLives - 1, 0));
       if (lives - 1 <= 0) {
-        alert("You lost all lives. Restarting level.");
+        setShowFailAlert(true);
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        setShowFailAlert(false);
         setCurrentQuestionIndex(0);
         setLives(3);
       }
@@ -55,15 +65,25 @@ export const LevelPage: React.FC = () => {
     setLives(3);
     setSelectedAnswer(null);
     setSelectedAnswerStyle("border-gray-400");
+    setShowFailAlert(false);
+    setShowPassAlert(false);
   };
 
   const currentQuestion = levelQuestions.questions[currentQuestionIndex];
 
   return (
-    <div className="flex flex-col items-center text-white font-medium gap-8 py-5">
-      <div className="text-2xl">Lives: {lives}</div>
-      <div className="text-xl">
-        Question {currentQuestionIndex + 1} of {levelQuestions.questions.length}
+    <div className="flex flex-col items-center text-white font-medium gap-8 py-5 relative">
+      <div className="flex flex-col items-end absolute top-5 right-5 text-xl gap-8">
+        <div className="flex flex-col items-center gap-2">
+          <div>Lvl: {levelId}</div>
+          <Lives amountOfLives={lives} />
+          <div>
+            Question: {currentQuestionIndex + 1} /{" "}
+            {levelQuestions.questions.length}
+          </div>
+        </div>
+        {showFailAlert && <FailAlert />}
+        {showPassAlert && <PassAlert />}
       </div>
       <div className="flex flex-col items-center gap-5">
         <div className="text-2xl">{currentQuestion.question}</div>
@@ -89,16 +109,17 @@ export const LevelPage: React.FC = () => {
                 currentQuestion.options[currentQuestion.correct]
               )
             }
-            className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600"
+            className="bg-primary text-white text-2xl px-10 py-4 rounded-lg hover:bg-primary-hover hover:scale-105 ease-in duration-150"
             disabled={!selectedAnswer}
           >
-            Check
+            Check the answer
           </button>
           <button
             onClick={resetLevel}
-            className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600"
+            title="restart the lvl"
+            className="bg-secondary hover:bg-secondary-hover text-white p-3 m-3 rounded-full hover:rotate-45 ease-in duration-150"
           >
-            Reset
+            <GrPowerReset />
           </button>
         </div>
       </div>
