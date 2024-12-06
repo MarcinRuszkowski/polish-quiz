@@ -11,7 +11,7 @@ export const LvlPath = () => {
 
   return (
     <div className="flex flex-col items-center gap-10 justify-center m-10 relative">
-      {allLevelsCompleted ? (
+      {!allLevelsCompleted ? (
         <Congrats />
       ) : (
         <div className="flex flex-col md:flex-row gap-10">

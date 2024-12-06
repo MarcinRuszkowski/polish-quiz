@@ -42,11 +42,11 @@ export const Congrats: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="relative inset-0 flex flex-col items-center justify-center bg-msecondary text-white max-w-full  max-h-[350px] p-10 rounded-lg shadow-lg">
-      <div className="text-5xl font-bold">Congratulations!</div>
+    <div className="relative inset-0 flex flex-col gap-5 items-center justify-center bg-msecondary text-white max-w-full  max-h-[350px] p-10 rounded-lg shadow-lg">
+      <div className="text-4xl md:text-5xl font-bold">Congratulations!</div>
       <div className="text-lg text-blue-300">You completed all levels!</div>
-      <div className="text-md mt-4">
-        Now you can learn animals in Polish. Keep learning Polish!
+      <div className="text-md mt-4 text-center">
+        You already know animals in Polish. Keep learning!
       </div>
       <button
         onClick={handleClose}

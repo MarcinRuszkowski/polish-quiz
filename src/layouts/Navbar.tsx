@@ -12,7 +12,7 @@ export const Navbar: React.FC = () => {
         className="hover:scale-105  ease-in duration-100"
       >
         <SparklesText
-          className="font-medium font-mono text-4xl"
+          className="font-medium font-mono text-3xl md:text-4xl"
           text="Learn animals in polish"
         />
       </h1>
