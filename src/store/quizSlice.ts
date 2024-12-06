@@ -24,7 +24,7 @@ const initialState: QuizState = {
   levels: questionsData.map((level) => ({
     id: level.id,
     status: level.id === 1 ? "unlocked" : "locked",
-    lives: 3,
+    lives: 5,
     questions: level.questions,
   })),
   currentLevel: null,
@@ -59,9 +59,8 @@ const quizSlice = createSlice({
       const level = state.levels.find((lvl) => lvl.id === action.payload);
       if (level) level.lives -= 1;
     },
-    resetLevel: (state, action: PayloadAction<number>) => {
-      const level = state.levels.find((lvl) => lvl.id === action.payload);
-      if (level) level.lives = 3;
+    resetGame: () => {
+      return initialState;
     },
     setCurrentLevel: (state, action: PayloadAction<number | null>) => {
       state.currentLevel = action.payload;
@@ -73,7 +72,7 @@ export const {
   unlockLevel,
   completeLevel,
   loseLife,
-  resetLevel,
+  resetGame,
   setCurrentLevel,
 } = quizSlice.actions;
 

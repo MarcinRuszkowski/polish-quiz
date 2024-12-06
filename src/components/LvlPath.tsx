@@ -14,7 +14,7 @@ export const LvlPath = () => {
       {allLevelsCompleted ? (
         <Congrats />
       ) : (
-        <div className="flex gap-10">
+        <div className="flex flex-col md:flex-row gap-10">
           {levels.map((level) => (
             <LvlCircle key={level.id} id={level.id} status={level.status} />
           ))}

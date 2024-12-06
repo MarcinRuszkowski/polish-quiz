@@ -6,7 +6,7 @@ interface LivesProps {
 }
 
 export const Lives: React.FC<LivesProps> = ({ amountOfLives = 0 }) => {
-  const totalLives = 3;
+  const totalLives = 5;
   const hearts = Array.from(
     { length: totalLives },
     (_, index) => index < amountOfLives
